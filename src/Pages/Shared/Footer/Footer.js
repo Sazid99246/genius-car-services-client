@@ -5,7 +5,7 @@ const Footer = () => {
     var dateObject = dateobj.getFullYear();
     return (
         <div>
-            <p><small>copyright &copy; {dateObject} </small></p>
+            <p className='text-center'><small>copyright &copy; {dateObject} </small></p>
         </div>
     );
 };

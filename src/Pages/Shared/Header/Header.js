@@ -4,7 +4,7 @@ import logo from '../../../images/logo.png'
 const Header = () => {
     return (
         <div>
-            <Navbar bg="primary" variant="dark" className=''>
+            <Navbar bg="primary" variant="dark" fixed="top">
                 <Container>
                     <Navbar.Brand href="#home">
                         <img
@@ -16,9 +16,9 @@ const Header = () => {
                     </Navbar.Brand>
 
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                        <Nav.Link href="home">Home</Nav.Link>
+                        <Nav.Link href='home#services'>Services</Nav.Link>
+                        <Nav.Link href='home#experts'>Experts</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

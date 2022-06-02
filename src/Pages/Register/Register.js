@@ -10,7 +10,7 @@ const Register = () => {
     const navigate = useNavigate();
     const [agree, setAgree] = useState(false);
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
     let registerError;
     if(user){
         signOut(auth)

@@ -7,6 +7,7 @@ import auth from '../../../firebase.init';
 import logo from '../../../images/logo.png'
 const Header = () => {
     const [user] = useAuthState(auth)
+    console.log(user);
     const handleSignOut = () => {
         signOut(auth)
     }
@@ -33,11 +34,13 @@ const Header = () => {
                         <Nav>
                             <Nav.Link href="#deets">About</Nav.Link>
                             {
-                                user ? <button onClick={handleSignOut}>Logout</button>
+                                user ?
+                                    <>
+                                        <p className='text-light my-auto pe-2'>Signed in as <br /> {user?.displayName}</p>
+                                        <button onClick={handleSignOut}>Logout</button>
+                                    </>
                                     :
-                                    <Nav.Link as={Link} eventKey={2} to="/login">
-                                        Login
-                                    </Nav.Link>
+                                    <Nav.Link as={Link} eventKey={2} to="/login">Login</Nav.Link>
                             }
                         </Nav>
                     </Navbar.Collapse>

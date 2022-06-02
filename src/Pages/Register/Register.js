@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth'
 import LoadingButton from '../Shared/LoadingButton/LoadingButton'
 import auth from '../../firebase.init'
 import { signOut } from 'firebase/auth';
@@ -11,19 +11,21 @@ const Register = () => {
     const [agree, setAgree] = useState(false);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     let registerError;
     if(user){
         signOut(auth)
         navigate('/login')
     }
-    if(loading){
+    if(loading || updating){
         return <LoadingButton/>
     }
-    if(error){
-        registerError = <p className="text-danger">{error?.message}</p>
+    if(error || updateError){
+        registerError = <p className="text-danger">{error?.message || updateError?.message}</p>
     }
-    const onSubmit = data => {
-        createUserWithEmailAndPassword(data.email, data.password, {sendEmailVerification: true});
+    const onSubmit = async data => {
+        await createUserWithEmailAndPassword(data.email, data.password, {sendEmailVerification: true});
+        await updateProfile({displayName: data.name})
     }
     return (
         <div>

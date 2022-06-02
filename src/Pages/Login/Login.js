@@ -69,7 +69,7 @@ const Login = () => {
                 <p>Don't have an account?
                     <Link className='text-primary pe-auto text-decoration-none' to='/register'>Please Register</Link>
                 </p>
-                <p onClick={handlePasswordReset}>Forget Password</p>
+                <p>Forget Password? <button className='btn btn-link text-primary pe-auto text-decoration-none' onClick={handlePasswordReset}>Reset Password</button> </p>
             </Form>
             <SocialLogin />
         </div>

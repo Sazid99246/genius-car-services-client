@@ -3,7 +3,7 @@ import { Button, Card, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const Service = ({ expert }) => {
-    const { id, name, price, description, img } = expert;
+    const { _id, name, price, description, img } = expert;
     const navigate = useNavigate();
     const navigateToServiceDetail = id =>{
         navigate(`/service/${id}`)
@@ -16,7 +16,7 @@ const Service = ({ expert }) => {
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>Price: {price}</Card.Text>
                     <Card.Text>{description}</Card.Text>
-                    <Button onClick={()=>navigateToServiceDetail(id)}>Book {name}</Button>
+                    <Button onClick={()=>navigateToServiceDetail(_id)}>Book {name}</Button>
                 </Card.Body>
             </Card>
         </Col>

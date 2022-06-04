@@ -7,7 +7,6 @@ import auth from '../../../firebase.init';
 import logo from '../../../images/logo.png'
 const Header = () => {
     const [user] = useAuthState(auth)
-    console.log(user);
     const handleSignOut = () => {
         signOut(auth)
     }
@@ -33,6 +32,12 @@ const Header = () => {
                         </Nav>
                         <Nav>
                             <Nav.Link href="#deets">About</Nav.Link>
+                            {
+                                user && <>
+                                <Nav.Link as={Link} to="/addservice">Add Service</Nav.Link>
+                                <Nav.Link as={Link} to="/manage">Manage Service</Nav.Link>
+                                </>
+                            }
                             {
                                 user ?
                                     <>

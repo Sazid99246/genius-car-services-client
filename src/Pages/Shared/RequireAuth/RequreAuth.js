@@ -7,11 +7,11 @@ import LoadingButton from '../../Shared/LoadingButton/LoadingButton'
 const RequreAuth = ({ children }) => {
     const [user, loading] = useAuthState(auth)
     const location = useLocation();
-    if(!user){
-        return <Navigate to="/login" state={{ from: location }} replace></Navigate>
+    if (loading) {
+        return <LoadingButton />
     }
-    if(loading){
-        return <LoadingButton/>
+    if (!user) {
+        return <Navigate to="/login" state={{ from: location }} replace></Navigate>
     }
     return children;
 };

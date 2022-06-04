@@ -11,6 +11,8 @@ import ServiceDetail from './Pages/ServiceDetail/ServiceDetail';
 import NotFound from './Pages/NotFound/NotFound';
 import RequreAuth from './Pages/Shared/RequireAuth/RequreAuth';
 import CheckOut from './Pages/CheckOut/CheckOut';
+import AddService from './Pages/AddService/AddService';
+import ManageServics from './Pages/ManageServices/ManageServics';
 
 function App() {
   return (
@@ -20,10 +22,16 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
         <Route path='/service/:serviceId' element={<ServiceDetail />} />
+        <Route path='/addservice' element={<AddService />} />
         <Route path='/about' element={<About />} />
         <Route path='/checkout' element={
           <RequreAuth>
             <CheckOut />
+          </RequreAuth>
+        } />
+        <Route path='/manage' element={
+          <RequreAuth>
+            <ManageServics />
           </RequreAuth>
         } />
         <Route path='/login' element={<Login />} />
